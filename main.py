@@ -1,11 +1,10 @@
 from fastapi import FastAPI, HTTPException, BackgroundTasks
-import redis
+from rediscluster import RedisCluster
 import uvicorn
 
 app = FastAPI()
-redis_client = redis.Redis(
-    host="redisserver.dist-prd", port=6379, decode_responses=True
-)
+startup_nodes = [{"host": "redisserver.dist-prd", "port": "6379"}]  # Redis 클러스터 노드 정보
+redis_client = RedisCluster(startup_nodes=startup_nodes, decode_responses=True)
 
 
 def redis_set(key: str, value: str):

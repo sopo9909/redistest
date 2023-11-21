@@ -5,11 +5,7 @@ import pika
 import uuid
 
 app = FastAPI()
-startup_nodes = [
-    {"host": "redisserver-0.redisserver.dist-prd", "port": "6379"},
-    {"host": "redisserver-1.redisserver.dist-prd", "port": "6379"},
-    {"host": "redisserver-2.redisserver.dist-prd", "port": "6379"},
-]  # Redis 클러스터 노드 정보
+startup_nodes = [{"host": "redisserver.common-prd", "port": "6379"}]  # Redis 클러스터 노드 정보
 redis_client = RedisCluster(startup_nodes=startup_nodes, decode_responses=True)
 
 

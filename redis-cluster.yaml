@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: redisserver
-  namespace: dist-prd
+  namespace: common-prd
 data:
   update-node.sh: |
     #!/bin/sh
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: redisserver
-  namespace: dist-prd
+  namespace: common-prd
 spec:
   serviceName: redisserver
   replicas: 6
